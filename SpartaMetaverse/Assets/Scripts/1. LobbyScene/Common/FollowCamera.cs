@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FollowCamera : MonoBehaviour
 {
-    public GameObject target;
-    public float followSpeed = 4.0f;
-    public float z = -10.0f;
+    public GameObject target;               //  따라다닐 플레이어 오브젝트
+    public float followSpeed = 4.0f;        //  따라가는 속도
+    public float z = -10.0f;                //  z축 고정
 
 
     Transform cameraTransform;
