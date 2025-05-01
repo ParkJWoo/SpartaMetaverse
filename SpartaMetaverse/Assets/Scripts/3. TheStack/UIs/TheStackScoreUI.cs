@@ -24,8 +24,8 @@ public class TheStackScoreUI : TheStackBaseUI
         comboText = transform.Find("ComboText").GetComponent<TextMeshProUGUI>();
         bestScoreText = transform.Find("BestScoreText").GetComponent<TextMeshProUGUI>();
         bestComboText = transform.Find("BestComboText").GetComponent<TextMeshProUGUI>();
-        startButton = transform.Find("ScoreUIStartButton").GetComponent<Button>();
-        exitButton = transform.Find("ScoreUIExitButton").GetComponent<Button>();
+        startButton = transform.Find("StartButton").GetComponent<Button>();
+        exitButton = transform.Find("ExitButton").GetComponent<Button>();
 
         startButton.onClick.AddListener(OnClickStartButton);
         exitButton.onClick.AddListener(OnClickExitButton);
