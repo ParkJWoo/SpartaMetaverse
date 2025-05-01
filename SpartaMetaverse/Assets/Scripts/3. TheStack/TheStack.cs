@@ -59,6 +59,8 @@ public class TheStack : MonoBehaviour
     private const string BestScoreKey = "BestScore";
     private const string BestComboKey = "BestCombo";
 
+    private bool isGameOver = false;
+
     void Start()
     {
         if (originBlock == null)
@@ -80,6 +82,11 @@ public class TheStack : MonoBehaviour
 
     void Update()
     {
+        if(isGameOver)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             if (PlaceBlock())
@@ -92,6 +99,8 @@ public class TheStack : MonoBehaviour
                 //  게임 오버
                 Debug.Log("Game Over");
                 UpdateScore();
+                isGameOver = true;
+                GameOverEffect();
             }
         }
 
@@ -311,6 +320,30 @@ public class TheStack : MonoBehaviour
 
             PlayerPrefs.SetInt(BestScoreKey, bestScore);
             PlayerPrefs.SetInt(BestComboKey, bestCombo);
+        }
+    }
+
+    void GameOverEffect()
+    {
+        int childCount = this.transform.childCount;
+
+        for (int i = 1; i < 20; i++)
+        {
+            if(childCount < i)
+            {
+                break;
+            }
+
+            GameObject go = transform.GetChild(childCount - i).gameObject;
+
+            if(go.name.Equals("Rubble"))
+            {
+                continue;
+            }
+
+            Rigidbody rigid = go.AddComponent<Rigidbody>();
+
+            rigid.AddForce((Vector3.up * Random.Range(0, 10.0f) + Vector3.right * (Random.Range(0, 10.0f) - 5.0f)) * 100.0f);
         }
     }
 }
