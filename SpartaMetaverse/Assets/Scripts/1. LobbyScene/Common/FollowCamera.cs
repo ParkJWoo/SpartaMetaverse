@@ -4,25 +4,48 @@ using UnityEngine;
 
 public class FollowCamera : MonoBehaviour
 {
-    public GameObject target;               //  따라다닐 플레이어 오브젝트
-    public float followSpeed = 4.0f;        //  따라가는 속도
-    public float z = -10.0f;                //  z축 고정
+    [SerializeField] Transform playerTransform;
+    [SerializeField] Vector3 cameraPosition;
 
-    Transform cameraTransform;
-    Transform targetTransform;
+    [SerializeField] Vector2 center;
+    [SerializeField] Vector2 mapSize;
+
+    [SerializeField] float cameraMoveSpeed;
+
+    float height;
+    float width;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        cameraTransform = GetComponent<Transform>();
-        targetTransform = target.GetComponent<Transform>();
+        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
+
+        height = Camera.main.orthographicSize;
+        width = height * Screen.width / Screen.height;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        cameraTransform.position = Vector2.Lerp(cameraTransform.position, targetTransform.position, followSpeed * Time.deltaTime);
+        LimitCameraArea();
+    }
 
-        cameraTransform.Translate(0, 0, z);
+    void LimitCameraArea()
+    {
+        transform.position = Vector3.Lerp(transform.position,
+                                          playerTransform.position + cameraPosition,
+                                          Time.deltaTime * cameraMoveSpeed);
+        float lx = mapSize.x - width;
+        float clampX = Mathf.Clamp(transform.position.x, -lx + center.x, lx + center.x);
+
+        float ly = mapSize.y - height;
+        float clampY = Mathf.Clamp(transform.position.y, -ly + center.y, ly + center.y);
+
+        transform.position = new Vector3(clampX, clampY, -10f);
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(center, mapSize * 2);
     }
 }

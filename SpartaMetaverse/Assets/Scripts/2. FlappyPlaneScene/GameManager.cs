@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //Restart();
         uiManager.UpdateScroe();
 
         bestScore = PlayerPrefs.GetInt(BestScoreKey, 0);
@@ -52,7 +54,9 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         //  현재 켜져 있는 씬의 이름을 호출해 불러온다.
+        //Restart();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        uiManager.OnClickStart();
     }
 
     public void AddScore(int score)
@@ -61,5 +65,14 @@ public class GameManager : MonoBehaviour
         Debug.Log("Score: " + currentScore);
 
         uiManager.UpdateScroe();
+    }
+
+    public void Restart()
+    {
+        //  게임 씬에 입장하자마자 플레이어가 나가는거 막기 위한 용도
+        Player player = GetComponent<Player>();
+
+        player.isDead = false;
+        player.forwardSpeed = 0.0f;
     }
 }
