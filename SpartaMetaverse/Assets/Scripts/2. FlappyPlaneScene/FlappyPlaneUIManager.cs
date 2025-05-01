@@ -33,5 +33,4 @@ public class FlappyPlaneUIManager : MonoBehaviour
     {
         scoreText.text = score.ToString();
     }
-  
 }
