@@ -18,12 +18,15 @@ public class Player : MonoBehaviour
 
     public bool godMode = false;
 
-    FlappyPlaneGameManager gameManager;
+    GameManager gameManager;
+
+    UIManager uiManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = FlappyPlaneGameManager.Instance;
+        gameManager = GameManager.Instance;
+        uiManager = UIManager.Instance;
 
         animator = GetComponentInChildren<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -48,11 +51,11 @@ public class Player : MonoBehaviour
         {
             if(deathCoolDown <= 0.0f)
             {
-                //  게임 재시작
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-                {
-                    gameManager.RestartGame();
-                }
+                ////  게임 재시작
+                //if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+                //{
+                //    gameManager.RestartGame();
+                //}
             }
 
             else

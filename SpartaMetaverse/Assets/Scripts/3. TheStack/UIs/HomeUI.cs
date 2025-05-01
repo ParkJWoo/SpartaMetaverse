@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TheStackHomeUI : TheStackBaseUI
+public class HomeUI : BaseUI
 {
     Button startButton;
     Button exitButton;
@@ -13,7 +13,7 @@ public class TheStackHomeUI : TheStackBaseUI
         return UIState.Home;
     }
 
-    public override void Init(TheStackUIManager uiManager)
+    public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
 

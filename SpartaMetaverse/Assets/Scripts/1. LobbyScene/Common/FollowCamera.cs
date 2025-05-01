@@ -8,7 +8,6 @@ public class FollowCamera : MonoBehaviour
     public float followSpeed = 4.0f;        //  따라가는 속도
     public float z = -10.0f;                //  z축 고정
 
-
     Transform cameraTransform;
     Transform targetTransform;
 

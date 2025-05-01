@@ -16,11 +16,11 @@ public class Obstacle : MonoBehaviour
 
     public float widthPadding = 4.0f;
 
-    FlappyPlaneGameManager gameManager;
+    GameManager gameManager;
 
     private void Start()
     {
-        gameManager = FlappyPlaneGameManager.Instance;
+        gameManager = GameManager.Instance;
     }
 
     public Vector2 SetRandomPlace(Vector2 lastPosition, int obstacleCount)

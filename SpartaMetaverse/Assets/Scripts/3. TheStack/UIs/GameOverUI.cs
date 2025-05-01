@@ -6,25 +6,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public class TheStackScoreUI : TheStackBaseUI
+public class GameOverUI : BaseUI
 {
+    GameManager gameManager;
+
     TextMeshProUGUI scoreText;
-    TextMeshProUGUI comboText;
     TextMeshProUGUI bestScoreText;
-    TextMeshProUGUI bestComboText;
 
     Button startButton;
     Button exitButton;
 
-    public override void Init(TheStackUIManager uiManager)
+    public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
 
+        gameManager = FindObjectOfType<GameManager>();
+
         scoreText = transform.Find("ScoreText").GetComponent<TextMeshProUGUI>();
-        comboText = transform.Find("ComboText").GetComponent<TextMeshProUGUI>();
         bestScoreText = transform.Find("BestScoreText").GetComponent<TextMeshProUGUI>();
-        bestComboText = transform.Find("BestComboText").GetComponent<TextMeshProUGUI>();
-        startButton = transform.Find("StartButton").GetComponent<Button>();
+        startButton = transform.Find("RestartButton").GetComponent<Button>();
         exitButton = transform.Find("ExitButton").GetComponent<Button>();
 
         startButton.onClick.AddListener(OnClickStartButton);
@@ -33,25 +33,23 @@ public class TheStackScoreUI : TheStackBaseUI
 
     protected override UIState GetUIState()
     {
-        return UIState.Score;
+        return UIState.GameOver;
     }
 
-    public void SetUI(int score, int combo, int bestScore, int bestCombo)
+    public void SetUI(int score, int bestScore)
     {
         scoreText.text = score.ToString();
-        comboText.text = combo.ToString();
         bestScoreText.text = bestScore.ToString();
-        bestComboText.text = bestCombo.ToString();
     }
 
     void OnClickStartButton()
     {
-        uiManager.OnClickStart();
+        gameManager.RestartGame();
+        //uiManager.OnClickStart();
     }
 
     void OnClickExitButton()
     {
         uiManager.OnClickExit();
     }
-
 }

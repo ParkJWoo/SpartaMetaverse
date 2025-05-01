@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class TheStackBaseUI : MonoBehaviour
+public abstract class BaseUI : MonoBehaviour
 {
-    protected TheStackUIManager uiManager;
+    protected UIManager uiManager;
 
-    public virtual void Init(TheStackUIManager uiManager)
+    public virtual void Init(UIManager uiManager)
     {
         this.uiManager = uiManager;
     }

@@ -8,7 +8,8 @@ public class GoToTheStackScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //  빌드용 해상도 변경 코드
+        Screen.SetResolution(1080, 1920, FullScreenMode.Windowed);
     }
 
     // Update is called once per frame

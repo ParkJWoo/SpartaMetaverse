@@ -3,42 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FlappyPlaneGameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     //  싱글톤을 만들 때 가장 기본적인 형태
-    static FlappyPlaneGameManager gameManager;
+    static GameManager gameManager;
 
     //  Instance화를 통해 해당 객체를 쉽게 참조할 수 있도록 한다.
-    public static FlappyPlaneGameManager Instance
+    public static GameManager Instance
     {
         get { return gameManager; }
     }
 
-    private int currentScore = 0;
+    UIManager uiManager;
 
-    FlappyPlaneUIManager uiManager;
-
-    public FlappyPlaneUIManager UIManager
+    public UIManager UIManager
     {
         get { return uiManager; }
     }
 
+    private int currentScore = 0;
+    public int Score { get { return currentScore; } }
+
+    public int bestScore = 0;
+    //public int BestScore { get => bestScore; set => bestScore; }
+
+    public string BestScoreKey = "BestScore";
+
     public void Awake()
     {
         gameManager = this;
-        uiManager = FindObjectOfType<FlappyPlaneUIManager>();
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     private void Start()
     {
-        uiManager.UpdateScore(0);
+        uiManager.UpdateScroe();
+
+        bestScore = PlayerPrefs.GetInt(BestScoreKey, 0);
     }
 
     public void GameOver()
     {
         Debug.Log("Game Over!!");
 
-        uiManager.SetRestart();
+        uiManager.SetScoreUI();
     }
 
     public void RestartGame()
@@ -52,6 +60,6 @@ public class FlappyPlaneGameManager : MonoBehaviour
         currentScore += score;
         Debug.Log("Score: " + currentScore);
 
-        uiManager.UpdateScore(currentScore);
+        uiManager.UpdateScroe();
     }
 }
