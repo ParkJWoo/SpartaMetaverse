@@ -27,6 +27,5 @@ public class TheStackGameUI : TheStackBaseUI
         scoreText.text = score.ToString();
         comboText.text = combo.ToString();
         maxComboText.text = maxCombo.ToString();
-
     }
 }
