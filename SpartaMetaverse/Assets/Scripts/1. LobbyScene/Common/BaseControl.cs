@@ -26,14 +26,16 @@ public class BaseControl : MonoBehaviour
 
     #endregion
 
-   protected virtual void Awake()
+    protected AnimationControl animationControl;
+
+    protected virtual void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        animationControl = GetComponent<AnimationControl>();
     }
 
     protected virtual void Start()
     {
-
     }
 
     protected virtual void Update()
@@ -57,6 +59,8 @@ public class BaseControl : MonoBehaviour
         direction = direction * 5;
 
         rigidbody2D.velocity = direction;
+
+        animationControl.Move(direction);
     }
 
     private void Rotate(Vector2 direction)
