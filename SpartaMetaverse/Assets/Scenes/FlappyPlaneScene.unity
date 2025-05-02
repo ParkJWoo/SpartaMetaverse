@@ -353,10 +353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5dfb7d2a0fad44693ae85c3fd1aed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  bestScoreText: {fileID: 0}
-  restartButton: {fileID: 0}
-  exitButton: {fileID: 0}
 --- !u!114 &60669272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4703,7 +4699,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -4730,6 +4726,7 @@ MonoBehaviour:
   flapForce: 6
   forwardSpeed: 3
   isDead: 0
+  isGameStart: 0
   godMode: 0
 --- !u!1 &1722915746
 GameObject:
