@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GoToFlappyScene : MonoBehaviour
 {
+    UIManager uiManager;
+
+    private void Awake()
+    {
+        uiManager = FindObjectOfType<UIManager>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -17,7 +24,8 @@ public class GoToFlappyScene : MonoBehaviour
 
         if (player != null)
         {
-            SceneManager.LoadScene("FlappyPlaneScene");
+            uiManager.OnTriggerEnterMiniGameUI();
+            //SceneManager.LoadScene("FlappyPlaneScene");
         }
     }
 }

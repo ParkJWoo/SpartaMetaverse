@@ -26,8 +26,6 @@ public class BgLooper : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Triggered: " + collision.name);
-
         //  collision.CompareTag: 충돌한 오브젝트의 태그 명을 비교하는 함수
         if (collision.CompareTag("Background"))
         {

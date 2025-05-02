@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     public int Score { get { return currentScore; } }
 
     public int bestScore = 0;
-    //public int BestScore { get => bestScore; set => bestScore; }
 
     public string BestScoreKey = "BestScore";
 
@@ -46,30 +45,26 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("Game Over!!");
-
         uiManager.SetScoreUI();
     }
 
     public void RestartGame()
     {
         //  현재 켜져 있는 씬의 이름을 호출해 불러온다.
-        //Restart();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        uiManager.OnClickStart();
+        uiManager.UIStateNone();
     }
 
     public void AddScore(int score)
     {
         currentScore += score;
-        Debug.Log("Score: " + currentScore);
 
         uiManager.UpdateScroe();
     }
 
     public void Restart()
     {
-        //  게임 씬에 입장하자마자 플레이어가 나가는거 막기 위한 용도
+        //  게임 씬에 입장하자마자 플레이어가 움직이는 것을 막기 위한 용도
         Player player = GetComponent<Player>();
 
         player.isDead = false;

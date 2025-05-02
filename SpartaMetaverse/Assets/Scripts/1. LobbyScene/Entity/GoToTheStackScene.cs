@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GoToTheStackScene : MonoBehaviour
 {
+    UIManager uiManager;
+
+    private void Awake()
+    {
+        uiManager = GetComponent<UIManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +26,8 @@ public class GoToTheStackScene : MonoBehaviour
 
         if (player != null)
         {
+            uiManager.ChangeState(UIState.EnterMiniGame);
+
             SceneManager.LoadScene("TheStackScene");
         }
     }

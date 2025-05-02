@@ -45,7 +45,7 @@ public class GameOverUI : BaseUI
     void OnClickStartButton()
     {
         gameManager.RestartGame();
-        //uiManager.OnClickStart();
+        uiManager.OnClickStart();
     }
 
     void OnClickExitButton()

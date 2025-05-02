@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     public float flapForce = 6.0f;
     public float forwardSpeed = 3.0f;
     public bool isDead = false;
+
+    //  씬 입장 시 플레이어가 움직이는 것을 막기 위한 bool 값 변수 선언
+    public bool isGameStart = false;
     float deathCoolDown = 0.0f;
 
     bool isFlap = false;
@@ -46,30 +49,44 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //  죽었을 때와 죽지 않았을 때를 구분하여 동작
-        if(isDead)
+        //  HomeUI에서 게임 시작 버튼을 누를 때까지 플레이어가 받는 중력을 0으로 두어 씬 입장과 동시에 끝나는 것을 방지.
+        if (!isGameStart)
         {
-            if(deathCoolDown <= 0.0f)
+            _rigidbody2D.gravityScale = 0.0f;
+            return;
+        }
+
+        //  게임 시작 버튼을 눌렀을 때부터 플레이어의 중력을 적용
+        else
+        {
+            _rigidbody2D.gravityScale = 1.0f;
+
+            //  죽었을 때와 죽지 않았을 때를 구분하여 동작
+            if (isDead)
             {
-                ////  게임 재시작
-                //if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-                //{
-                //    gameManager.RestartGame();
-                //}
+                if (deathCoolDown <= 0.0f)
+                {
+                    ////  게임 재시작
+                    //if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+                    //{
+                    //    gameManager.RestartGame();
+                    //}
+                }
+
+                else
+                {
+                    deathCoolDown -= Time.deltaTime;
+                }
             }
 
             else
             {
-                deathCoolDown -= Time.deltaTime;
-            }
-        }
-
-        else
-        {
-            if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-            {
-                //  플레이어 점프
-                isFlap = true;
+                //  마우스 오른쪽 버튼을 누를 때만 점프를 뜀
+                if (Input.GetMouseButtonDown(0))
+                {
+                    //  플레이어 점프
+                    isFlap = true;
+                }
             }
         }
     }
