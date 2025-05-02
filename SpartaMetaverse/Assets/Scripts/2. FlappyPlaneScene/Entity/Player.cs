@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
         if (!isGameStart)
         {
             _rigidbody2D.gravityScale = 0.0f;
+            forwardSpeed = 0.0f;
             return;
         }
 
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour
         else
         {
             _rigidbody2D.gravityScale = 1.0f;
+            forwardSpeed = 3.0f;
 
             //  죽었을 때와 죽지 않았을 때를 구분하여 동작
             if (isDead)
