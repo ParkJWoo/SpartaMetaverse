@@ -63,6 +63,17 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("LobbyScene");
     }
 
+    //  로비 씬 → 나가기 버튼 누를 시 게임 종료
+    public void OnClickQuit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+    Application.Quit();
+#endif
+        //Application.Quit();
+    }
+
     public void UpdateScroe()
     {
         gameUI.SetUI(gameManager.Score);

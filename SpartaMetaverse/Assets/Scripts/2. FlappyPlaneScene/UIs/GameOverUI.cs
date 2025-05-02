@@ -52,4 +52,9 @@ public class GameOverUI : BaseUI
     {
         uiManager.OnClickExit();
     }
+
+    void OnClickQuit()
+    {
+        uiManager.OnClickQuit();
+    }
 }
