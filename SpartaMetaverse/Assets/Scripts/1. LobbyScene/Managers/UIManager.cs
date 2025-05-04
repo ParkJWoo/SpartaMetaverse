@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour
 
         if(isAction)
         {
-            dialogueUI.SetUI(lobbyManager.scanObject);
+            dialogueUI.SetUI(lobbyManager.scanObject, lobbyManager.talkText.text);
         }
 
         else if(!isAction)
@@ -154,4 +154,5 @@ public class UIManager : MonoBehaviour
 
         ChangeState(UIState.GameOver);
     }
+
 }

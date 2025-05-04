@@ -21,7 +21,7 @@ public class PlayerControl : BaseControl
 
         if(Input.GetMouseButtonDown(0))
         {
-            if(ScanObject())
+            if(scanObject != null)
             {
                 manager.Action(scanObject);
 
@@ -65,7 +65,7 @@ public class PlayerControl : BaseControl
     }
 
     //  지정한 범위 내 클릭 시 상호작용할 오브젝트가 있는지 확인하는 메서드
-    bool ScanObject()
+    void ScanObject()
     {
         //  범위 설정
         Debug.DrawRay(this.transform.position, lookDirection * 1.3f, new Color(0, 1, 0));
@@ -76,15 +76,11 @@ public class PlayerControl : BaseControl
         if (rayHit.collider != null)
         {
             scanObject = rayHit.collider.gameObject;
-
-            return true;
         }
 
         else
         {
             scanObject = null;
-
-            return false;
         }
     }
 }

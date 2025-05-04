@@ -20,10 +20,12 @@ public class DialogueUI : BaseUI
         return UIState.Dialogue;
     }
 
-    public void SetUI(GameObject scanObj)
+    public void SetUI(GameObject scanObj, string talkData)
     {
         scanObject = scanObj;
 
-        dialogueText.text = $"이것의 이름은 {scanObject.name} 이다";
+        //dialogueText.text = $"이것의 이름은 {scanObject.name} 이다";
+
+        dialogueText.text = talkData;
     }
 }
