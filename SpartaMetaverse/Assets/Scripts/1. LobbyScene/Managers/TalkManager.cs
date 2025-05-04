@@ -17,6 +17,7 @@ public class TalkManager : MonoBehaviour
         talkData.Add(1000, "스파르타 메타버스에 어서 와라.. 이곳에서 터질 것 같은 머리를 차갑게 식히고 가라..");
         talkData.Add(2000, "나는 샌즈가 아니다! 그저 귀여운 해골일 뿐..");
         talkData.Add(3000,  "해피 할로윈!! 할로윈이 아니라고? 내게는 매일이 할로윈이야!");
+        talkData.Add(4000, "이 너머에 미니게임이 준비되어 있다! 즐기고 가라!");
 
         talkData.Add(100,  "비어있는 상자이다");
     }
