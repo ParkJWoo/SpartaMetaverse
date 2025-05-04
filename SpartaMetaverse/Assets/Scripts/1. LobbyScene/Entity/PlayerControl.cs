@@ -23,14 +23,14 @@ public class PlayerControl : BaseControl
         {
             if(ScanObject())
             {
-                manager.InteractiveAction(scanObject);
+                manager.Action(scanObject);
 
                 Debug.Log($"이것의 이름은 {scanObject.name} 이다.");
             }
 
             else
             {
-                manager.InteractiveAction(scanObject);
+                manager.Action(scanObject);
             }
         }
 

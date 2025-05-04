@@ -1,31 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class DialogueUI : BaseUI
+public class DialogueUI : MonoBehaviour
 {
-    TextMeshProUGUI talkText;
-
-    GameObject scanObject;
-    bool isAction;
-
-    public override void Init(UIManager uiManager)
+    // Start is called before the first frame update
+    void Start()
     {
-        base.Init(uiManager);
-
-        talkText = transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
+        
     }
 
-    protected override UIState GetUIState()
+    // Update is called once per frame
+    void Update()
     {
-        return UIState.Dialogue;
-    }
-
-    public void OnClickNPC(bool action, GameObject scanObj)
-    {
-        scanObject = scanObj;
-
-        talkText.text = "이것의 이름은 " + scanObject.name + "라고 한다.";
+        
     }
 }
