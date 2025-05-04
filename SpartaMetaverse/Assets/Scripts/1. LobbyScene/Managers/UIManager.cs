@@ -81,6 +81,7 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.EnterMiniGame);
     }
 
+    //  오브젝트와 상호작용 시, 대화창 UI 생성
     public void OnClickObject(bool isAction)
     {
         ChangeState(UIState.Dialogue);
@@ -133,7 +134,6 @@ public class UIManager : MonoBehaviour
 #else
     Application.Quit();
 #endif
-        //Application.Quit();
     }
 
     public void UpdateScroe()

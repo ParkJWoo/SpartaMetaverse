@@ -24,8 +24,6 @@ public class PlayerControl : BaseControl
             if(scanObject != null)
             {
                 manager.Action(scanObject);
-
-                Debug.Log($"이것의 이름은 {scanObject.name} 이다.");
             }
 
             else
