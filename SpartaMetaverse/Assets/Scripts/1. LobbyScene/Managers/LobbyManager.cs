@@ -21,6 +21,11 @@ public class LobbyManager : MonoBehaviour
         get { return uiManager; }
     }
 
+    private void Awake()
+    {
+        uiManager = FindObjectOfType<UIManager>();
+    }
+
     public void Action(GameObject scanObj)
     {
         //  Exit Action
@@ -34,26 +39,12 @@ public class LobbyManager : MonoBehaviour
         {
             isAction = true;
             scanObject = scanObj;
-            talkText.text = "이것의 이름은 " + scanObject.name + "라고 한다.";
+            //talkText.text = "이것의 이름은 " + scanObject.name + "라고 한다.";
+
+            Debug.Log($"이것의 이름은 {scanObject.name} 이다");
         }
 
-        dialougePanel.SetActive(isAction);
-    }
-
-    private void Awake()
-    {
-        uiManager = FindObjectOfType<UIManager>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //dialougePanel.SetActive(isAction);
+        uiManager.OnClickObject(isAction);
     }
 }

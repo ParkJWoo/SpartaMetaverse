@@ -6,6 +6,7 @@ using UnityEngine;
 public class DialogueUI : BaseUI
 {
     TextMeshProUGUI dialogueText;
+    GameObject scanObject;
 
     public override void Init(UIManager uiManager)
     {
@@ -19,8 +20,10 @@ public class DialogueUI : BaseUI
         return UIState.Dialogue;
     }
 
-    public void SetUI(string dialogue)
+    public void SetUI(GameObject scanObj)
     {
+        scanObject = scanObj;
 
+        dialogueText.text = $"이것의 이름은 {scanObject.name} 이다";
     }
 }
