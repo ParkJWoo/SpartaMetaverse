@@ -82,6 +82,7 @@ public class UIManager : MonoBehaviour
     }
 
     //  오브젝트와 상호작용 시, 대화창 UI 생성
+    //  게임 시작 전, 유니티 에디터에서 대화창 UI를 킨 상태에서만 적용됨 → 끄고 할 경우, 해당 구간에 에러 발생 및 UI창이 켜지지 않음 (원인 불명)
     public void OnClickObject(bool isAction)
     {
         ChangeState(UIState.Dialogue);
