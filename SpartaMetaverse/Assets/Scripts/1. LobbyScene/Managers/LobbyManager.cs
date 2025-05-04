@@ -62,12 +62,14 @@ public class LobbyManager : MonoBehaviour
     {
         string talkData = talkManager.GetTalk(id, talkIndex);
 
+        //  해당 오브젝트에 들어있는 대사 데이터가 없을 경우, null을 반환한다.
         if(talkData == null)
         {
             isAction = false;
             return;
         }
 
+        //  bool값이 NPC로 체크되어 있는 오브젝트일 경우, 해당 NPC에 들어있는 데이터를 호출!
         if(isNPC)
         {
             talkText.text = talkData;
@@ -83,6 +85,5 @@ public class LobbyManager : MonoBehaviour
         }
 
         isAction = true;
-        talkIndex++;
     }
 }
