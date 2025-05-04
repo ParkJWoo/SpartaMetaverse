@@ -63,7 +63,7 @@ public class UIManager : MonoBehaviour
     {
         currentState = state;
         enterMiniGameUI?.SetActive(currentState);
-        dialogueUI.SetActive(currentState);
+        dialogueUI?.SetActive(currentState);
         homeUI?.SetActive(currentState);
         gameUI?.SetActive(currentState);
         gameOverUI?.SetActive(currentState);
@@ -81,9 +81,21 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.EnterMiniGame);
     }
 
-    public void OnClickObject()
+    public void OnClickObject(bool isAction)
     {
+        Debug.Log(lobbyManager.scanObject.name);
+
         ChangeState(UIState.Dialogue);
+
+        if(isAction)
+        {
+            dialogueUI.OnClickNPC(lobbyManager.isAction, lobbyManager.scanObject);
+        }
+
+        else if(!isAction)
+        {
+            ChangeState(UIState.None);
+        }
     }
 
     //  미니 게임 입장 UI에서 "예" 버튼을 누를 시, 미니 게임 화면으로 이동
