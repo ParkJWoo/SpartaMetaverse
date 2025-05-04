@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public enum UIState
 {
     None,
+    Dialogue,
     EnterMiniGame,
     Home,
     Game,
@@ -24,11 +25,13 @@ public class UIManager : MonoBehaviour
     UIState currentState = UIState.None;
 
     EnterMiniGameUI enterMiniGameUI = null;
+    DialogueUI dialogueUI = null;
     HomeUI homeUI = null;
     GameUI gameUI = null;
     GameOverUI gameOverUI = null;
 
     GameManager gameManager;
+    LobbyManager lobbyManager;
 
     private void Awake()
     {
@@ -36,8 +39,13 @@ public class UIManager : MonoBehaviour
 
         gameManager = FindObjectOfType<GameManager>();
 
+        lobbyManager = FindObjectOfType<LobbyManager>();
+
         enterMiniGameUI = GetComponentInChildren<EnterMiniGameUI>(true);
         enterMiniGameUI?.Init(this);
+
+        dialogueUI = GetComponentInChildren<DialogueUI>();
+        dialogueUI?.Init(this);
 
         homeUI = GetComponentInChildren<HomeUI>(true);
         homeUI?.Init(this);
@@ -55,6 +63,7 @@ public class UIManager : MonoBehaviour
     {
         currentState = state;
         enterMiniGameUI?.SetActive(currentState);
+        dialogueUI.SetActive(currentState);
         homeUI?.SetActive(currentState);
         gameUI?.SetActive(currentState);
         gameOverUI?.SetActive(currentState);
@@ -70,6 +79,11 @@ public class UIManager : MonoBehaviour
     public void OnTriggerEnterMiniGameUI()
     {
         ChangeState(UIState.EnterMiniGame);
+    }
+
+    public void OnClickObject()
+    {
+        ChangeState(UIState.Dialogue);
     }
 
     //  미니 게임 입장 UI에서 "예" 버튼을 누를 시, 미니 게임 화면으로 이동

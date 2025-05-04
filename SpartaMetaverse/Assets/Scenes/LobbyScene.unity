@@ -16079,7 +16079,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB300\uD654\uCC3D UI \uC785\uB2C8\uB2E4~\n\n\uB300\uD654\uCC3D UI \uC785\uB2C8\uB2E4~"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 990ac1cd9cc5f954fa626daf9d0999cb, type: 2}
   m_sharedMaterial: {fileID: -5127504221571345084, guid: 990ac1cd9cc5f954fa626daf9d0999cb, type: 2}

@@ -8,10 +8,13 @@ public class LobbyManager : MonoBehaviour
 {
     UIManager uiManager;
 
+    public GameObject dialougePanel;
     public TextMeshProUGUI talkText;
 
     //  플레이어가 스캔한 오브젝트
     public GameObject scanObject;
+
+    public bool isAction;
 
     public UIManager UIManager
     {
@@ -20,9 +23,21 @@ public class LobbyManager : MonoBehaviour
 
     public void Action(GameObject scanObj)
     {
-        scanObject = scanObj;
+        //  Exit Action
+        if (isAction)
+        {
+            isAction = false;
+        }
 
-        talkText.text = "이것의 이름은 " + scanObject.name + "라고 한다.";
+        //  Enter Action
+        else
+        {
+            isAction = true;
+            scanObject = scanObj;
+            talkText.text = "이것의 이름은 " + scanObject.name + "라고 한다.";
+        }
+
+        dialougePanel.SetActive(isAction);
     }
 
     private void Awake()

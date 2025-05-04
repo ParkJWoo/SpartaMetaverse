@@ -28,10 +28,9 @@ public class PlayerControl : BaseControl
                 Debug.Log($"이것의 이름은 {scanObject.name} 이다.");
             }
 
-            else if(!ScanObject())
+            else
             {
-                Debug.Log("아무것도 없다");
-
+                manager.Action(scanObject);
             }
         }
 
@@ -46,13 +45,13 @@ public class PlayerControl : BaseControl
 
     protected override void HandleAction()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = manager.isAction ? 0 : Input.GetAxisRaw("Horizontal");
+        float vertical = manager.isAction ? 0 : Input.GetAxisRaw("Vertical");
         movementDirection = new Vector2(horizontal, vertical).normalized;
 
         Vector2 mousePosition = Input.mousePosition;
         Vector2 worldPos = camera.ScreenToWorldPoint(mousePosition);
-        lookDirection = (worldPos - (Vector2)transform.position);
+        lookDirection = manager.isAction ? Vector2.zero : (worldPos - (Vector2)transform.position);
 
         if (lookDirection.magnitude < 0.9f)
         {
