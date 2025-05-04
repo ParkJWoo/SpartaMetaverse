@@ -7,6 +7,7 @@ public enum UIState
 {
     None,
     Dialogue,
+    CustomCharacter,
     EnterMiniGame,
     Home,
     Game,
@@ -24,8 +25,9 @@ public class UIManager : MonoBehaviour
 
     UIState currentState = UIState.None;
 
-    EnterMiniGameUI enterMiniGameUI = null;
     DialogueUI dialogueUI = null;
+    CustomCharacterUI customCharacterUI = null;
+    EnterMiniGameUI enterMiniGameUI = null;
     HomeUI homeUI = null;
     GameUI gameUI = null;
     GameOverUI gameOverUI = null;
@@ -41,11 +43,14 @@ public class UIManager : MonoBehaviour
 
         lobbyManager = FindObjectOfType<LobbyManager>();
 
-        enterMiniGameUI = GetComponentInChildren<EnterMiniGameUI>(true);
-        enterMiniGameUI?.Init(this);
-
         dialogueUI = GetComponentInChildren<DialogueUI>();
         dialogueUI?.Init(this);
+
+        customCharacterUI = GetComponentInChildren<CustomCharacterUI>();
+        customCharacterUI?.Init(this);
+
+        enterMiniGameUI = GetComponentInChildren<EnterMiniGameUI>(true);
+        enterMiniGameUI?.Init(this);
 
         homeUI = GetComponentInChildren<HomeUI>(true);
         homeUI?.Init(this);
@@ -64,6 +69,7 @@ public class UIManager : MonoBehaviour
         currentState = state;
         enterMiniGameUI?.SetActive(currentState);
         dialogueUI?.SetActive(currentState);
+        customCharacterUI.SetActive(currentState);
         homeUI?.SetActive(currentState);
         gameUI?.SetActive(currentState);
         gameOverUI?.SetActive(currentState);
@@ -96,6 +102,16 @@ public class UIManager : MonoBehaviour
         {
             ChangeState(UIState.None);
         }
+
+    }
+
+    public void OnTriggerCustomCharacter()
+    {
+        ChangeState(UIState.CustomCharacter);
+    }
+
+    public void OnClickCustomColor()
+    {
 
     }
 
