@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class DialogueUI : MonoBehaviour
+public class DialogueUI : BaseUI
 {
-    // Start is called before the first frame update
-    void Start()
+    TextMeshProUGUI dialogueText;
+
+    public override void Init(UIManager uiManager)
     {
-        
+        base.Init(uiManager);
+
+        dialogueText = transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override UIState GetUIState()
     {
-        
+        return UIState.Dialogue;
+    }
+
+    public void SetUI(string dialogue)
+    {
+
     }
 }
