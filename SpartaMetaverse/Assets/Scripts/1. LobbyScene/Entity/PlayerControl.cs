@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerControl : BaseControl
 {
     private Camera camera;
+
+    //  오브젝트 스캔 확인용 변수
     public GameObject scanObject;
 
     public LobbyManager manager;
@@ -65,7 +67,7 @@ public class PlayerControl : BaseControl
     //  지정한 범위 내 클릭 시 상호작용할 오브젝트가 있는지 확인하는 메서드
     void ScanObject()
     {
-        //  범위 설정
+        //  설정한 범위의 라인 그리기 
         Debug.DrawRay(this.transform.position, lookDirection * 1.3f, new Color(0, 1, 0));
 
         //  Object Layer 값을 가지고 있는 오브젝트들만 상호작용.

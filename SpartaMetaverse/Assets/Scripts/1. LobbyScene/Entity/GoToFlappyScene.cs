@@ -25,7 +25,6 @@ public class GoToFlappyScene : MonoBehaviour
         if (player != null)
         {
             uiManager.OnTriggerEnterMiniGameUI();
-            //SceneManager.LoadScene("FlappyPlaneScene");
         }
     }
 }

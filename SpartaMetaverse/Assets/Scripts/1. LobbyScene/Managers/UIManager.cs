@@ -7,11 +7,11 @@ public enum UIState
 {
     None,
     Dialogue,
-    CustomCharacter,
     EnterMiniGame,
     Home,
     Game,
-    GameOver
+    GameOver,
+    CustomCharacter
 }
 
 public class UIManager : MonoBehaviour
@@ -66,10 +66,12 @@ public class UIManager : MonoBehaviour
 
     public void ChangeState(UIState state)
     {
+        Debug.Log(state);
+
         currentState = state;
         enterMiniGameUI?.SetActive(currentState);
         dialogueUI?.SetActive(currentState);
-        customCharacterUI.SetActive(currentState);
+        customCharacterUI?.SetActive(currentState);
         homeUI?.SetActive(currentState);
         gameUI?.SetActive(currentState);
         gameOverUI?.SetActive(currentState);

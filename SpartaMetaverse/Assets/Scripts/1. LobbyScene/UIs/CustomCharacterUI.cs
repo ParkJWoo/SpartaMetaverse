@@ -14,6 +14,9 @@ public class CustomCharacterUI : BaseUI
 
         customColorButton = transform.Find("CustomColorButton").GetComponent<Button>();
         customWeaponButton = transform.Find("CustomWeaponButton").GetComponent<Button>();
+
+        customColorButton.onClick.AddListener(OnClickCustomColorButton);
+        customWeaponButton.onClick.AddListener(OnClickCustomWeapon);
     }
 
     protected override UIState GetUIState()
@@ -23,6 +26,7 @@ public class CustomCharacterUI : BaseUI
 
     void OnClickCustomColorButton()
     {
+
     }
 
     void OnClickCustomWeapon()
