@@ -11,6 +11,10 @@
 ### 게임 시퀀스 소개
 - 로비 화면 → 미니 게임 포탈과의 트리거 충돌을 통해 미니 게임 입장 → 미니 게임 플레이 or 나가기를 눌러 로비 화면으로 되돌아온다.
 
+### 해당 리포지터리 내 Git Convension 규칙 적용 
+![image](https://github.com/user-attachments/assets/61c9bba9-8480-426a-9ba4-57fbb4e08c34)
+
+
 * * *
 
 ## 2. Manager 객체 설명
