@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 
     UIManager uiManager;
 
-    // Start is called before the first frame update
+    #region Start 메서드 
     void Start()
     {
         gameManager = GameManager.Instance;
@@ -45,8 +45,9 @@ public class Player : MonoBehaviour
             Debug.LogError("Not Found Rigidbody2D!!");
         }
     }
+    #endregion
 
-    // Update is called once per frame
+    #region Update 메서드 → 게임 화면 전환 시, 플레이어가 자동으로 떨어지지 않도록 구현 + 플레이어 사망 처리 등을 관리한다.
     void Update()
     {
         //  HomeUI에서 게임 시작 버튼을 누를 때까지 플레이어가 받는 중력을 0으로 두어 씬 입장과 동시에 끝나는 것을 방지.
@@ -68,11 +69,7 @@ public class Player : MonoBehaviour
             {
                 if (deathCoolDown <= 0.0f)
                 {
-                    ////  게임 재시작
-                    //if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-                    //{
-                    //    gameManager.RestartGame();
-                    //}
+                   
                 }
 
                 else
@@ -83,7 +80,7 @@ public class Player : MonoBehaviour
 
             else
             {
-                //  마우스 오른쪽 버튼을 누를 때만 점프를 뜀
+                //  마우스 왼쪽 버튼을 누를 때만 점프를 뜀
                 if (Input.GetMouseButtonDown(0))
                 {
                     //  플레이어 점프
@@ -92,7 +89,9 @@ public class Player : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region FixedUpdate 메서드 → 마우스 클릭 시, 점프 적용을 관리한다.
     private void FixedUpdate()
     {
         if(isDead)
@@ -118,7 +117,9 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
+    #endregion
 
+    #region 장애물과 충돌 시 플레이어 사망 처리를 담당하는 구간
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(godMode)
@@ -137,4 +138,5 @@ public class Player : MonoBehaviour
         animator.SetBool("IsDie", true);
         gameManager.GameOver();
     }
+    #endregion
 }
