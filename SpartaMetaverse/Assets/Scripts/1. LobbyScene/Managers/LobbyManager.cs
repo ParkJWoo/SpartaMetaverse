@@ -9,10 +9,8 @@ public class LobbyManager : MonoBehaviour
 {
     UIManager uiManager;
 
-    //  상호작용에 필요한 변수들 선언
+    //  게임 내 오브젝트들과의 상호작용에 필요한 변수들 선언
     public TextMeshProUGUI talkText;
-
-    public GameObject talkPanel;
 
     public TalkManager talkManager;
     public int talkIndex;
@@ -28,11 +26,14 @@ public class LobbyManager : MonoBehaviour
         get { return uiManager; }
     }
 
+    #region Awake 메서드
     private void Awake()
     {
         uiManager = FindObjectOfType<UIManager>();
     }
+    #endregion
 
+    #region Action 메서드 → 플레이어와 오브젝트 간 상호작용을 진행할 때 시행되는 메서드
     public void Action(GameObject scanObj)
     {
         if (isAction)
@@ -50,26 +51,25 @@ public class LobbyManager : MonoBehaviour
 
             Talk(objData.id, objData.isNPC);
         }
-
-        //talkText.text = "이것의 이름은 " + scanObject.name + "라고 한다.";
-
-        //talkPanel.SetActive(isAction);
+   
         uiManager.OnClickObject(isAction);
     }
+    #endregion
 
-    //  오브젝트 내 들어있는 대사 데이터를 대화창 UI에서 호출한다.
+    #region Talk 메서드 → 오브젝트와 상호작용 시, 대사 데이터를 호출하는 메서드
+    //  오브젝트 내 들어있는 텍스트 데이터를 대화창 UI에서 호출한다.
     public void Talk(int id, bool isNPC)
     {
         string talkData = talkManager.GetTalk(id, talkIndex);
 
-        //  해당 오브젝트에 들어있는 대사 데이터가 없을 경우, null을 반환한다.
+        //  해당 오브젝트에 들어있는 텍스트 데이터가 없을 경우, null을 반환한다.
         if(talkData == null)
         {
             isAction = false;
             return;
         }
 
-        //  bool값이 NPC로 체크되어 있는 오브젝트일 경우, 해당 NPC에 들어있는 데이터를 호출!
+        //  bool값이 NPC로 체크되어 있는 오브젝트일 경우, 해당 NPC에 들어있는 텍스트 데이터를 호출!
         if(isNPC)
         {
             talkText.text = talkData;
@@ -86,4 +86,5 @@ public class LobbyManager : MonoBehaviour
 
         isAction = true;
     }
+    #endregion
 }

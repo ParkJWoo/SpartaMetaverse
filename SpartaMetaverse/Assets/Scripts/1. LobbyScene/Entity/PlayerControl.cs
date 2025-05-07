@@ -9,12 +9,15 @@ public class PlayerControl : BaseControl
 
     public LobbyManager manager;
 
+    #region Start 메서드
     protected override void Start()
     {
         base.Start();
         camera = Camera.main;
     }
+    #endregion
 
+    #region Update 메서드
     protected override void Update()
     {
         base.Update();
@@ -31,16 +34,19 @@ public class PlayerControl : BaseControl
                 manager.Action(scanObject);
             }
         }
-
     }
+    #endregion
 
+    #region FixedUpdate 메서드 → ScanObject 메서드 추가
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
 
         ScanObject();
     }
+    #endregion
 
+    #region HandleAction 메서드
     protected override void HandleAction()
     {
         float horizontal = manager.isAction ? 0 : Input.GetAxisRaw("Horizontal");
@@ -61,7 +67,9 @@ public class PlayerControl : BaseControl
             lookDirection = lookDirection.normalized;
         }
     }
+    #endregion
 
+    #region ScanObject 메서드 → 추가한 기능
     //  지정한 범위 내 클릭 시 상호작용할 오브젝트가 있는지 확인하는 메서드
     void ScanObject()
     {
@@ -81,4 +89,5 @@ public class PlayerControl : BaseControl
             scanObject = null;
         }
     }
+    #endregion
 }
