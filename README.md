@@ -14,6 +14,9 @@
 ### 해당 리포지터리 내 Git Commit Convention 규칙 적용 
 ![image](https://github.com/user-attachments/assets/61c9bba9-8480-426a-9ba4-57fbb4e08c34)
 
+### 기타 특이사항
+- UI → TextMeshPro를 사용하는 Text UI들에게 한글 적용을 위해 별도의 폰트 에셋을 제작하여 사용했습니다.
+- 게임 진행 중, 해당 폰트 에셋이 깨지는 현상이 발생할 수 있습니다. 
 
 * * *
 
